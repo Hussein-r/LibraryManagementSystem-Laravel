@@ -26,3 +26,4 @@ Route::resource('user', 'UserController');
 Route::resource('book', 'BooksController');
 Route::resource('category', 'CategoriesController');
 Route::resource('lease', 'LeasesController');
+Route::post('/book_profile','BooksController@showProfile');
