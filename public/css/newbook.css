@@ -1,0 +1,40 @@
+body {
+  background-image: -moz-linear-gradient(
+    90deg,
+    rgb(244, 86, 34) 0%,
+    rgb(245, 62, 84) 100%
+  );
+  background-image: -webkit-linear-gradient(
+    90deg,
+    rgb(244, 86, 34) 0%,
+    rgb(245, 62, 84) 100%
+  );
+  background-image: -ms-linear-gradient(
+    90deg,
+    rgb(244, 86, 34) 0%,
+    rgb(245, 62, 84) 100%
+  );
+}
+label {
+  color: white;
+}
+.banner-right {
+  float: right;
+  width: 500px;
+  height: auto;
+}
+.myform {
+  margin-top: 100px;
+  margin-left: 50px;
+  width: 40%;
+  float: left;
+}
+img {
+  height: 350px;
+}
+p {
+  color: white;
+}
+h6 {
+  color: white;
+}

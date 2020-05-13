@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/sort/{sort_value}', 'HomeController@sort');
+Route::post('/search', 'HomeController@search');
+Route::resource('user', 'UserController');
+Route::resource('book', 'BooksController');
+Route::resource('category', 'CategoriesController');
+Route::resource('lease', 'LeasesController');
