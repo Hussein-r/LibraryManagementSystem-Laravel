@@ -37,11 +37,13 @@ class LeasesController extends Controller
     public function store(Request $request)
     {
         $data=$this->validate($request,[
-            'days' => 'required|numeric',
+            'days' => 'required',
+            'price'=> '',
         ]);
         $lease=new Lease();
         $lease->user_id=@auth::user()->id;
         $lease->book_id=$request->book_id;
+        $lease->price=$request->price;
         $lease->days=$request->days;
         $lease->save();
         $books=Book::where("id","=",$request->book_id)->get();
@@ -50,7 +52,7 @@ class LeasesController extends Controller
         }
         $book->save();
         return redirect()->action(
-            'BooksController@index'
+            'BooksController@showProfile',['book'=>$book]
         );   
 
     }

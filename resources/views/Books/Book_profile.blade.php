@@ -3,7 +3,6 @@
 <html>
     <head>
         <link rel="stylesheet" href="/css/newbook.css">
-        <script type="text/javascript" src="/js/showlease.js"></script>
     </head>
     <body>
         <div style="display:inline-block;">
@@ -33,10 +32,12 @@
                             <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon5">Price</span>
-                            </div>    
-                            <input type="text" class="form-control" id="myprice" placeholder="Price For Days Specified" aria-label="Price" aria-describedby="basic-addon5" disabled>
+                            </div>
+                            <div>
+                            <input type="text" value="" class="form-control myprice" placeholder="Price For Days Specified" aria-label="Price" aria-describedby="basic-addon5" disabled>
                             </div>
                             <input type="text" Hidden class="form-control" id="mybook" value="{{$book->id}}" name="book_id">
+                            <input type="text"  class="form-control myprice" name="price"  placeholder="Price For Days Specified" aria-label="Price" aria-describedby="basic-addon5" hidden> 
                             {!! Form::submit('Confirm Lease',['class'=>'btn btn-primary'])  !!}
                         {!! Form::close() !!}                    
                     </div>
@@ -47,5 +48,6 @@
             <img class="img-fluid" src="/img/header-img.png" alt="">
         </div>
     </body>
+    <script type="text/javascript" src="/js/showlease.js"></script>
 </html>
 @endsection
