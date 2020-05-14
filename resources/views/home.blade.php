@@ -47,12 +47,8 @@
             <div class="card-title">
                 {{ $book->copies }} copies available
             </div>
-            <a href="/book/{{$book->id}}"> Book Details </a>
-            </div>
             <div class="card-footer">
-            <a class="btn btn-primary lease" >
-                Lease
-            </a>
+            <a href="/showprofile/{{$book->id}}" class="btn btn-primary">Find Out More!</a>
             </div>
         </div>
         </div>
