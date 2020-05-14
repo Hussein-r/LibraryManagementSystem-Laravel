@@ -25,9 +25,9 @@
     </div>
     <div class="row">
     <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Categories</a>
-      @foreach ($errors as $category)
-      <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="/category/{{$category->id}}" role="tab" aria-controls="profile">{{$category->name}}</a>
+      <a class="list-group-item list-group-item-action "  >Categories</a>
+      @foreach ($categories as $category)
+      <a class="list-group-item list-group-item-action" href="/category/{{$category->id}}" id="list-profile-list" data-toggle="list"  role="tab" aria-controls="profile">{{$category->name}}</a>
       @endforeach
  
     </div>
@@ -40,18 +40,7 @@
           <h2 class="card-title">
             {{$book->title}}
           </h2>
-          <span class="text-muted float-right fav-add"  onclick="addFav({{$book->id}},{{Auth::user()->id}})"> 
-                <i class="fa fa-heart fa-2x ml-1"></i>
-          </span>
-          <span  class="text-danger float-right fav-remove" onclick="removeFav({{$book->id}},{{Auth::user()->id}})">
-               <i class="fa fa-heart fa-2x ml-1"></i>
-          </span>
           
-          
-            <!-- <p class="card-text">
-                {{$book->details }}
-                
-            </p> -->
             <h5 class="card-title">
            BY {{$book->auther}}
             </h5>
@@ -74,6 +63,7 @@
          <div class="text-center">
          {{ $books->links() }}
          </div>
+        
     </body>
 @endsection
 

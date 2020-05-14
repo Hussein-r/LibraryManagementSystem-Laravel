@@ -30,10 +30,14 @@ class HomeController extends Controller
     public function sort($sort_value)
     {
         $books = Book::paginate(2);
+        $categories = Category::all();
         $books->setCollection(
             $books->sortByDesc($sort_value)
         );
-        return view('home', ['books' => $books]);
+        return view('home', [
+            'books' => $books,
+            'categories' => $categories
+        ]);
     }
     public function index()
     {
@@ -58,7 +62,7 @@ class HomeController extends Controller
         $categories = Category::all();
         $selectedCategory = Category::find($category);
         $books = Category::find($category)->books()->paginate(2);
-        return view('home', compact('books','categories', 'selectedCategory'));
+        return view('home', compact('categories','selectedCategory','books'));
     
 }
     
