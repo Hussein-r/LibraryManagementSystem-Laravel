@@ -42,3 +42,8 @@ Route::view('userList','managers.userList');
 Route::view('managerProfile','managers.managerProfile');
 Route::get('managers/{manager}/edit', 'managerController@edit');
 Route::patch('managers/{manager}', 'managerController@update');
+
+
+
+
+Route::get('/category/{category}', 'HomeController@category');
