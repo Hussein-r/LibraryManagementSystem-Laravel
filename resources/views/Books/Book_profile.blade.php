@@ -44,7 +44,7 @@
                 </div>
             </div>
         </div>
-        <div class="banner-right">
+        <div class="banner-right" style="float:right;">
             <img class="img-fluid" src="/img/header-img.png" alt="">
         </div>
     </body>

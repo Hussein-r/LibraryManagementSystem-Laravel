@@ -100,7 +100,6 @@ class managerController extends Controller
      */
     public function destroy(User $manager)
     {
-        //
           dd($manager);
             $manager->delete();
             return redirect()->action(

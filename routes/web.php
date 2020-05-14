@@ -31,6 +31,7 @@ Route::resource('lease', 'LeasesController');
 
 
 // hajar
+Route::delete('manager/{user}','managerController@destroy');
 
 Route::get('managerHome','managerController@show');
 
@@ -42,10 +43,5 @@ Route::view('userList','managers.userList');
 Route::view('managerProfile','managers.managerProfile');
 Route::get('managers/{manager}/edit', 'managerController@edit');
 Route::patch('managers/{manager}', 'managerController@update');
-Route::POST('/managers/{user}', 'managerController@destroy');
-
-
-
-
 Route::get('/showprofile/{book}','BooksController@showProfile');
 Route::get('/category/{category}', 'HomeController@category');

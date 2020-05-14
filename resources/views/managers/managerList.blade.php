@@ -8,12 +8,9 @@
     <ul>
       <li> {{$user->name}}</li>
       <li>{{$user->email}}</li><br>
-       <form action="/managers/{{$user->id}}" method="POST">
-        <input type="text" value="{{$user->id}}" hidden name="delete"/>
-       
-       <a class="btn btn-danger" type="submit">DELETE</a>
-
-       </form>
+      {!! Form::open(['route' => ['manager.destroy', $user ] ,'method' => 'delete' ]) !!}
+        {!! Form::submit('Delete',['class'=>'btn btn-danger mt-3'])  !!}
+      {!! Form::close() !!}
     </ul>
     }
     @endforeach
