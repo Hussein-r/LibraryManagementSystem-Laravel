@@ -6,7 +6,7 @@ use App\Book;
 use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Database\Eloquent\Collection;
+
 
 class HomeController extends Controller
 {
@@ -21,7 +21,18 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
-
+    public function search(Request $request)
+    {
+        $categories = Category::all();
+        $search=$request->get('search');
+        $books=Book::where("title","like","%". $search ."%")
+         ->orWhere("auther","like","%". $search ."%")
+         ->paginate(2);
+         return view(
+             'home',['books' => $books,
+        'categories' => $categories
+         ]);
+    }
     /**
      * Show the application dashboard.
      *
@@ -49,14 +60,7 @@ class HomeController extends Controller
         ]);
         
     }
-   public function search()
-   {
-    $result=Input::get('result');
-    $books=Book::where("title","LIKE","%". $result ."%")
-        ->orWhere("auther","LIKE","%". $result ."%")
-        ->get();
-        return view('home',['books' => $books]);
-   }
+   
    public function category($category){
        
         $categories = Category::all();
