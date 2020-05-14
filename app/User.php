@@ -16,8 +16,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','is_admin','is_active',
     ];
+
+
+    public function scopeList($query)
+    {
+        return $query->where('is_admin','1');
+    }
 
     /**
      * The attributes that should be hidden for arrays.

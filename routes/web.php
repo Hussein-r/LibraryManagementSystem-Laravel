@@ -26,5 +26,26 @@ Route::resource('user', 'UserController');
 Route::resource('book', 'BooksController');
 Route::resource('category', 'CategoriesController');
 Route::resource('lease', 'LeasesController');
+
+
+
+
+// hajar
+
+Route::get('managerHome','managerController@show');
+
+Route::view('managerList','managers.managerList');
+Route::get('managers', 'managerController@index');
+
+Route::view('userList','managers.userList');
+
+Route::view('managerProfile','managers.managerProfile');
+Route::get('managers/{manager}/edit', 'managerController@edit');
+Route::patch('managers/{manager}', 'managerController@update');
+Route::POST('/managers/{user}', 'managerController@destroy');
+
+
+
+
 Route::get('/showprofile/{book}','BooksController@showProfile');
 Route::get('/category/{category}', 'HomeController@category');
