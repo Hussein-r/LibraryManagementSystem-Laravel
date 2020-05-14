@@ -14,6 +14,7 @@
         <input class="form-control mr-sm-2" name="result" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn danger" type="submit">Search</button>
       </form>
+
       
     </div>
     <div class="col-sm-6 text-center">
@@ -25,7 +26,7 @@
     </div>
     <div class="row">
     <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action "  >Categories</a>
+      <a class="list-group-item list-group-item-action active"   href="/home" id="list-category-list" aria-controls="category">All Books</a>
       @foreach ($categories as $category)
       <a class="list-group-item list-group-item-action"  href="/category/{{$category->id}}" id="list-profile-list" aria-controls="profile">{{$category->name}}</a>
       @endforeach
