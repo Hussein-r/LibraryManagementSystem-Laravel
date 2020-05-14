@@ -53,7 +53,7 @@ class HomeController extends Controller
    {
     $result=Input::get('result');
     $books=Book::where("title","LIKE","%". $result ."%")
-        ->orWhere("auther","like","%". $result ."%")
+        ->orWhere("auther","LIKE","%". $result ."%")
         ->get();
         return view('home',['books' => $books]);
    }
