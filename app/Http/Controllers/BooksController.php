@@ -139,4 +139,9 @@ class BooksController extends Controller
             'BooksController@index'
         );   
     }
+    public function showProfile(Book $book)
+    {
+        $category=Category::where("id","=",$book->category_id)->get();
+        return view('Books.Book_profile',['book'=>$book,'category'=>$category]);
+    }
 }

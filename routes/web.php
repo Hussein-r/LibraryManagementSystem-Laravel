@@ -46,4 +46,5 @@ Route::patch('managers/{manager}', 'managerController@update');
 
 
 
+Route::get('/showprofile/{book}','BooksController@showProfile');
 Route::get('/category/{category}', 'HomeController@category');

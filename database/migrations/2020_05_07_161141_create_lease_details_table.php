@@ -17,7 +17,6 @@ class CreateLeaseDetailsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->softDeletes();
-            $table->date("date");
             $table->integer("days");
             $table->float("price");
             $table->unsignedBigInteger("user_id");
