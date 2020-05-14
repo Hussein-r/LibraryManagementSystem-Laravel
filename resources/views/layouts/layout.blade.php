@@ -13,7 +13,7 @@
     <title>
 
 
-@yield('title','my project')
+
 <!-- add default value to title -->
    
 </title>
@@ -38,7 +38,7 @@
    
 
    <!-- we can add another argument next to nav and use it in nav page for example : ['username'=>'hajaaaar'] -->
-   @include('nav')
+   @include('managers.navbar')
 
   </div>
 </nav>

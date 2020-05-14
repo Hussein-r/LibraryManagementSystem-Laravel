@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -47,9 +47,13 @@ class managerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $manager)
     {
         //
+        $manager=@auth::user()->id;
+        // dd($manager);
+        return view('managers.managerHome',['manager'=>$manager]);
+
     }
 
     /**
@@ -61,6 +65,7 @@ class managerController extends Controller
     public function edit(User $manager)
     {
         //
+    
         return view('managers.managerProfile',compact('manager'));
 
     }
@@ -93,8 +98,15 @@ class managerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $manager)
     {
         //
+          dd($manager);
+            $manager->delete();
+            return redirect()->action(
+                'managerController@index'
+            );   
+    
+
     }
 }

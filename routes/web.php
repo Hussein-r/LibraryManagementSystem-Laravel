@@ -32,7 +32,7 @@ Route::resource('lease', 'LeasesController');
 
 // hajar
 
-Route::view('managerHome','managers.managerHome');
+Route::get('managerHome','managerController@show');
 
 Route::view('managerList','managers.managerList');
 Route::get('managers', 'managerController@index');
@@ -42,6 +42,7 @@ Route::view('userList','managers.userList');
 Route::view('managerProfile','managers.managerProfile');
 Route::get('managers/{manager}/edit', 'managerController@edit');
 Route::patch('managers/{manager}', 'managerController@update');
+Route::POST('/managers/{user}', 'managerController@destroy');
 
 
 
