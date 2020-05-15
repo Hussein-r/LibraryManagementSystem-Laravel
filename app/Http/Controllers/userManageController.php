@@ -5,7 +5,7 @@ use Auth;
 use App\User;
 use Illuminate\Http\Request;
 
-class managerController extends Controller
+class userManageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,9 @@ class managerController extends Controller
     {
         //
 
-        $users=User::List()->get();
-        return view('managers.managerList',['users' => $users]);
+        $users=User::ListUsers()->get();
+        // $users=User::all();
+        return view('managers.userList',['users' => $users]);
     }
 
     /**
@@ -47,13 +48,9 @@ class managerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $manager)
+    public function show($id)
     {
         //
-        $manager=@auth::user()->id;
-        // dd($manager);
-        return view('managers.managerHome',['manager'=>$manager]);
-
     }
 
     /**
@@ -62,12 +59,9 @@ class managerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $manager)
+    public function edit($id)
     {
         //
-    
-        return view('managers.managerProfile',compact('manager'));
-
     }
 
     /**
@@ -77,52 +71,65 @@ class managerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(User $manager)
+    public function update(Request $request, $id)
     {
         //
-        $data=request()->validate([
-            
-            'name'=>'required|min:3',
-            'email'=>'required|email',
-            'password'=>'required',
-
-    ]);
-    
-            $manager->update($data);
-    
     }
 
     /**
      * Remove the specified resource from storage.
-     * 
+     *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $manager)
+    public function destroy(User $user)
     {
         //
-        //   dd($manager);
-            $manager->delete();
+        //   dd($user);
+            $user->delete();
             return redirect()->action(
-                'managerController@index'
+                'userManageController@index'
             );   
     
 
     }
 
-    public function unpromote(User $manager)
+    public function promote(User $user)
     {
-        //  dd($manager);
-            $manager->is_admin =0;
-            $manager->save();
-            // dd($manager);
+        //  dd($user);
+            $user->is_admin =1;
+            $user->save();
+            // dd($user);
             return redirect()->action(
-                'managerController@index'
-            );   
+                'userManageController@index'
+            );  
     
 
     }
 
+    public function activate(User $user)
+    {
+        //  dd($user);
+            $user->is_active =0;
+            $user->save();
+            // dd($user);
+            return redirect()->action(
+                'userManageController@index'
+            );  
+    
 
+    }
 
+    public function inactivate(User $user)
+    {
+        //  dd($user);
+            $user->is_active =1;
+            $user->save();
+            // dd($user);
+            return redirect()->action(
+                'userManageController@index'
+            );  
+    
+
+    }
 }

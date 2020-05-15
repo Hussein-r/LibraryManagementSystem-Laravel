@@ -2,19 +2,42 @@
 @extends('layouts.layout')
 
 @section('content')
-<p>manager listttt</p>
 
-  @foreach($users  as $user){
-    <ul>
-      <li> {{$user->name}}</li>
-      <li>{{$user->email}}</li><br>
-       <form action="/managers/{{$user->id}}" method="POST">
-        <input type="text" value="{{$user->id}}" hidden name="delete"/>
-       
-       <a class="btn btn-danger" type="submit">DELETE</a>
 
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Unpromote</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  @foreach($users  as $user)
+   <tr>
+   <td>    {{$user->name}}     </td>
+   <td>        {{$user->email}}          </td>
+   <td>
+   
+   <form action="/managers/{{$user->id}}" method="POST">
+   @method('PATCH')
+       @csrf       
+       <button class="btn btn-warning" type="submit">Unpromote</button>
        </form>
-    </ul>
-    }
-    @endforeach
+   </td>
+   <td>
+   <form action="/managers/{{$user->id}}" method="POST">
+       @method('DELETE')
+       @csrf       
+       <button class="btn btn-danger" type="submit">Delete</button>
+       </form>
+   </td>
+   </tr>
+   @endforeach
+
+  </tbody>
+</table>
+   
 @endsection
