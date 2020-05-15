@@ -6,7 +6,7 @@ use App\Book;
 use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Database\Eloquent\Collection;
+
 
 class HomeController extends Controller
 {
@@ -21,7 +21,18 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
-
+    public function search(Request $request)
+    {
+        $categories = Category::all();
+        $search=$request->get('search');
+        $books=Book::where("title","like","%". $search ."%")
+         ->orWhere("auther","like","%". $search ."%")
+         ->paginate(2);
+         return view(
+             'home',['books' => $books,
+        'categories' => $categories
+         ]);
+    }
     /**
      * Show the application dashboard.
      *
@@ -30,10 +41,14 @@ class HomeController extends Controller
     public function sort($sort_value)
     {
         $books = Book::paginate(2);
+        $categories = Category::all();
         $books->setCollection(
             $books->sortByDesc($sort_value)
         );
-        return view('home', ['books' => $books]);
+        return view('home', [
+            'books' => $books,
+            'categories' => $categories
+        ]);
     }
     public function index()
     {
@@ -45,20 +60,13 @@ class HomeController extends Controller
         ]);
         
     }
-   public function search()
-   {
-    $result=Input::get('result');
-    $books=Book::where("title","LIKE","%". $result ."%")
-        ->orWhere("auther","like","%". $result ."%")
-        ->get();
-        return view('home',['books' => $books]);
-   }
+   
    public function category($category){
        
         $categories = Category::all();
         $selectedCategory = Category::find($category);
         $books = Category::find($category)->books()->paginate(2);
-        return view('home', compact('books','categories', 'selectedCategory'));
+        return view('home', compact('categories','selectedCategory','books'));
     
 }
     
