@@ -5,6 +5,8 @@ use App\Book;
 use App\Lease;
 use Illuminate\Http\Request;
 use Auth;
+use Redirect;
+
 
 class LeasesController extends Controller
 {
@@ -40,21 +42,25 @@ class LeasesController extends Controller
             'days' => 'required',
             'price'=> '',
         ]);
-        $lease=new Lease();
-        $lease->user_id=@auth::user()->id;
-        $lease->book_id=$request->book_id;
-        $lease->price=$request->price;
-        $lease->days=$request->days;
-        $lease->save();
-        $books=Book::where("id","=",$request->book_id)->get();
-        foreach ($books as $book){
-            $book->copies=$book->copies -1;
+        $result=Lease::where([["book_id","=",$request->book_id],["user_id","=",@auth::user()->id]])->get();
+        if ($result->isEmpty()){ 
+            $lease=new Lease();
+            $lease->user_id=@auth::user()->id;
+            $lease->book_id=$request->book_id;
+            $lease->price=$request->price;
+            $lease->days=$request->days;
+            $lease->save();
+            $books=Book::where("id","=",$request->book_id)->get();
+            foreach ($books as $book){
+                $book->copies=$book->copies -1;
+            }
+            $book->save();
+            return redirect()->action(
+                'BooksController@showProfile',['book'=>$book]
+            );   
+        }else{
+            return Redirect::back()->withErrors(['You Already Have This Book On Lease']);
         }
-        $book->save();
-        return redirect()->action(
-            'BooksController@showProfile',['book'=>$book]
-        );   
-
     }
 
     /**

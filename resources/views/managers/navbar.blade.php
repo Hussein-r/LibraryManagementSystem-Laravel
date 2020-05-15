@@ -6,10 +6,10 @@
         <a class="nav-link" href="{{url('/managers')}}">Managers</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="userList">Users</a>
+        <a class="nav-link" href="{{url('/userList')}}">Users</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="books">Books</a>
+        <a class="nav-link" href="{{url('/book')}}">Books</a>
       </li>
      
     </ul>

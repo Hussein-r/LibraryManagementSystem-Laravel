@@ -33,15 +33,48 @@ Route::resource('lease', 'LeasesController');
 // hajar
 Route::delete('manager/{user}','managerController@destroy');
 
+//show graph and edit data
 Route::get('managerHome','managerController@show');
+Route::get('managers/{manager}/edit', 'managerController@edit');
+Route::patch('managers/{manager}', 'managerController@update');
 
-Route::view('managerList','managers.managerList');
+//list managers
+// Route::view('managerList','managers.managerList');
 Route::get('managers', 'managerController@index');
+// delete manager
+Route::delete('/managers/{manager}', 'managerController@destroy');
+//unpromote manager
+Route::patch('managers/{manager}', 'managerController@unpromote');
 
-Route::view('userList','managers.userList');
+
+
+
+
+//list users
+// Route::view('userList','managers.userList');
+Route::get('userList', 'userManageController@index');
+// delete manager
+Route::delete('/userList/{user}', 'userManageController@destroy');
+//promote user
+Route::patch('userList/{user}', 'userManageController@promote');
+//inactivate user
+Route::patch('userList/inactivate/{user}', 'userManageController@inactivate');
+//activate user
+Route::patch('userList/activate/{user}', 'userManageController@activate');
+
+
+
+// Route::view('managerProfile','managers.managerProfile');
+
+
 
 Route::view('managerProfile','managers.managerProfile');
 Route::get('managers/{manager}/edit', 'managerController@edit');
 Route::patch('managers/{manager}', 'managerController@update');
+
+
+
+// ---------------------
+
 Route::get('/showprofile/{book}','BooksController@showProfile');
 Route::get('/category/{category}', 'HomeController@category');

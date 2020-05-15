@@ -27,7 +27,7 @@ class HomeController extends Controller
         $search=$request->get('search');
         $books=Book::where("title","like","%". $search ."%")
          ->orWhere("auther","like","%". $search ."%")
-         ->paginate(2);
+         ->paginate(3);
          return view(
              'home',['books' => $books,
         'categories' => $categories
@@ -40,7 +40,7 @@ class HomeController extends Controller
      */
     public function sort($sort_value)
     {
-        $books = Book::paginate(2);
+        $books = Book::paginate(3);
         $categories = Category::all();
         $books->setCollection(
             $books->sortByDesc($sort_value)
@@ -52,7 +52,7 @@ class HomeController extends Controller
     }
     public function index()
     {
-        $books=Book::paginate(2);
+        $books=Book::paginate(3);
         $categories = Category::all();
         return view('home', [
             'books' => $books,
@@ -65,7 +65,7 @@ class HomeController extends Controller
        
         $categories = Category::all();
         $selectedCategory = Category::find($category);
-        $books = Category::find($category)->books()->paginate(2);
+        $books = Category::find($category)->books()->paginate(3);
         return view('home', compact('categories','selectedCategory','books'));
     
 }

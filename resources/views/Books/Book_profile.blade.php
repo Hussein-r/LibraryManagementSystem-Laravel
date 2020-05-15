@@ -42,6 +42,11 @@
                         {!! Form::close() !!}                    
                     </div>
                 </div>
+                <div>
+                    @if($errors->any())
+                        <h4 style="color:white;">{{$errors->first()}}</h4>
+                    @endif
+                </div>
             </div>
         </div>
         <div class="banner-right" style="float:right;">
