@@ -24,6 +24,19 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('username') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="name" autofocus>
+
+                                @error('username')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -61,6 +74,15 @@
                             </div>
                         </div>
 
+                        <div class="form-group row input-group mb-3">
+                            <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Profile pictur') }}</label>
+                            <div class="col-md-6 custom-file">
+                                <input type="file" class="custom-file-input" name="avatar" id="inputGroupFile01">
+                                <label class="custom-file-label" for="inputGroupFile01" value="{{ old('avatar') }}" placeholder="Choose Image">Choose Image</label>
+                            </div>
+                        </div>
+                        <div><span class="text-white">{{$errors->first('image')}}</span>
+                        </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -69,6 +91,11 @@
                             </div>
                         </div>
                     </form>
+                    <br/>
+                    <div style="text-align: center;">
+                        <h6>Have an account?<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </h6>
+                    </div>
                 </div>
             </div>
         </div>

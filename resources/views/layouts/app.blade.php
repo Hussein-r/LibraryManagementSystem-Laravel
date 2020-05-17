@@ -71,15 +71,22 @@ controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggl
                                   Welcome  {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('user.show',['user'=> Auth::id()]) }}">
+                                        My Profile
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <div style="width: 50px;height:50px; radius:50%">
+                                    <img style="height:600px;" class="card-img-top" src="/images/{{Auth::user()->avatar}}" alt="avatar"> 
                                 </div>
                             </li>
                         @endguest
