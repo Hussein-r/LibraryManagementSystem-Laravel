@@ -1,19 +1,18 @@
 body {
-  background-image: -moz-linear-gradient(
+  /* background-color:    rgb(146, 240, 216); */
+  /* background-image: -moz-linear-gradient(
     90deg,
-    rgb(244, 86, 34) 0%,
-    rgb(245, 62, 84) 100%
-  );
+    rgb(146, 240, 216)30%,
+    rgb(128, 199, 189) 100%  );
   background-image: -webkit-linear-gradient(
     90deg,
-    rgb(244, 86, 34) 0%,
-    rgb(245, 62, 84) 100%
+    rgb(146, 240, 216)30%,
+    rgb(128, 199, 189) 100%
   );
   background-image: -ms-linear-gradient(
     90deg,
-    rgb(244, 86, 34) 0%,
-    rgb(245, 62, 84) 100%
-  );
+    rgb(146, 240, 216)30%,
+    rgb(128, 199, 189) 100%  ); */
 }
 label {
   color: white;
@@ -30,7 +29,7 @@ label {
   float: left;
 }
 img {
-  height: 350px;
+  height: 300px;
 }
 p {
   color: white;
