@@ -163,6 +163,9 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         // Illuminate\Support\Facades\Input::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
+
+
 
         /*
          * Package Service Providers...
