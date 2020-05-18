@@ -33,7 +33,8 @@ class User extends Authenticatable
     {
         return $query->where('is_admin','0');
     }
-
+    
+    
 
     /**
      * The attributes that should be hidden for arrays.

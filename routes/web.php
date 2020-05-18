@@ -26,6 +26,7 @@ Route::resource('user', 'UserController');
 Route::resource('book', 'BooksController');
 Route::resource('category', 'CategoriesController');
 Route::resource('lease', 'LeasesController');
+Route::get('/fav','FavouriteController@storeOrUpdate');
 
 
 

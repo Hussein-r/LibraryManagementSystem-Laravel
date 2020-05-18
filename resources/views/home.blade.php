@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="/css/newbook.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        
     </head>
     <body>
       @section('content')
@@ -30,18 +31,25 @@
             </div>
             <div style="margin-left:110px;">
               @foreach($books as $book)
+              
                     <div class=" col-md-6 mb-4 mt-3" style="display:inline-block;width:30%;" >
                         <div class="card h-100">
                             <img class="card-img-top" src="/images/{{$book->image}}" alt="">
                             <div class="card-body">
                                 <h4 class="card-title">{{$book->title}}</h4>
-                                <p class="card-text">{{$book->details}}</p>
+                                <div class="col-md-2">
+                                    <button id="love"  onclick="updateFavorite({{$book->id}})">&#x2764;</button>
+                                  </div>
+                                
                             </div>
+                           
                             <div class="card-footer">
                                 <a href="{{route('book.show',$book->id)}}" class="btn btn-primary">Find Out More!</a>
+                               
                             </div>
                         </div>
                     </div>
+                    
               @endforeach
             </div>
           </div>
@@ -52,3 +60,5 @@
       @endsection
     </body>
 </html>
+<script src="{{ asset('js/book.js') }}" defer></script>
+
