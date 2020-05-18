@@ -28,7 +28,8 @@ Route::resource('category', 'CategoriesController');
 Route::resource('lease', 'LeasesController');
 Route::get('/fav','FavouriteController@storeOrUpdate');
 
-
+Route::get('/my_books/{id}', 'UserController@my_books');
+Route::get('/my_favorite/{id}', 'UserController@my_favorite');
 
 
 // hajar
@@ -62,16 +63,23 @@ Route::patch('userList/{user}', 'userManageController@promote');
 Route::patch('userList/inactivate/{user}', 'userManageController@inactivate');
 //activate user
 Route::patch('userList/activate/{user}', 'userManageController@activate');
-
-
+//charts
+Route::get('chart', 'ChartController@index');
 
 // Route::view('managerProfile','managers.managerProfile');
 
 
 
 Route::view('managerProfile','managers.managerProfile');
+
+//edit dataaaaa
 Route::get('managers/{manager}/edit', 'managerController@edit');
+
 Route::patch('managers/{manager}', 'managerController@update');
+
+
+
+
 
 
 

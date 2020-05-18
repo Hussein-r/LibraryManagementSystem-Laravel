@@ -10,5 +10,15 @@ class Book extends Model
     {
         return $this->belongsTo('App\Category');
     }
+
+    public function lease()
+    {
+        return $this->hasMany('App\Lease');
+    }
+    public function favourite()
+    {
+        return $this->hasMany('App\Favourite');
+    }
+
     use SoftDeletes;
 }

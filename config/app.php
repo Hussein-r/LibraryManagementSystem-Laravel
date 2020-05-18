@@ -162,6 +162,10 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        // Illuminate\Support\Facades\Input::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
+
+
 
         /*
          * Package Service Providers...
@@ -229,6 +233,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Html' => 'Illuminate\Html\HtmlFacade',
         'Form' => 'Illuminate\Html\FormFacade',
+        // 'Input' => Illuminate\Support\Facades\Input::class,
 
     ],
 

@@ -71,7 +71,8 @@
                         <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
                     </div>
                 </div>
-                <div><span class="text-white">{{$errors->first('image')}}</span></div>
+                <div><span class="text-white">{{$errors->first('image')}}</span>
+                </div>
                 {!! Form::submit('Add A Book',['class'=>'btn btn-primary'])  !!}
 
             {!! Form::close() !!}

@@ -44,8 +44,12 @@
                             </div>
                            
                             <div class="card-footer">
+<<<<<<< HEAD
                                 <a href="{{route('book.show',$book->id)}}" class="btn btn-primary">Find Out More!</a>
                                
+=======
+                                <a href="/showprofile/{{$book->id}}" class="btn btn-primary">Find Out More!</a>
+>>>>>>> 7c8cb1f4fbbab293f65da8b8fd720d00906e85a2
                             </div>
                         </div>
                     </div>
