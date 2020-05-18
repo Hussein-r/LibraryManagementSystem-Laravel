@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\User;
 use Illuminate\Http\Request;
+app('App\Http\Controllers\ChartController')->index();
 
 class managerController extends Controller
 {
@@ -65,8 +66,8 @@ class managerController extends Controller
     public function edit(User $manager)
     {
         //
-    
-        return view('managers.managerProfile',compact('manager'));
+        // $manager=@auth::user()->id;
+        return view('managers.managerProfile',['manager'=>$manager]);
 
     }
 
@@ -90,7 +91,11 @@ class managerController extends Controller
     
             $manager->update($data);
     
-    }
+            // return view('managers.managerHome', ['manager'=>$manager,'chart'=>$chart]);
+            return redirect()->action(
+                'ChartController@index'
+            );
+        }
 
     /**
      * Remove the specified resource from storage.
