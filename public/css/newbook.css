@@ -1,9 +1,10 @@
-body {
-  /* background-color:    rgb(146, 240, 216); */
-  /* background-image: -moz-linear-gradient(
+ body {
+  background-color:    rgb(161, 243, 223); 
+   /* background-image: -moz-linear-gradient(
     90deg,
-    rgb(146, 240, 216)30%,
-    rgb(128, 199, 189) 100%  );
+    
+    rgb(128, 199, 189) 100% 
+     );
   background-image: -webkit-linear-gradient(
     90deg,
     rgb(146, 240, 216)30%,
@@ -13,7 +14,7 @@ body {
     90deg,
     rgb(146, 240, 216)30%,
     rgb(128, 199, 189) 100%  ); */
-}
+} 
 label {
   color: white;
 }
@@ -32,8 +33,8 @@ img {
   height: 300px;
 }
 p {
-  color: white;
+  color: black;
 }
 h6 {
-  color: white;
+  color: black;
 }

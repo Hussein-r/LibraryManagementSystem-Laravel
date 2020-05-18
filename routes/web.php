@@ -28,7 +28,7 @@ Route::resource('category', 'CategoriesController');
 Route::resource('lease', 'LeasesController');
 
 Route::get('/my_books/{id}', 'UserController@my_books');
-
+Route::get('/my_favorite/{id}', 'UserController@my_favorite');
 
 
 // hajar

@@ -35,7 +35,7 @@
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ url('/') }}">
+                        <a class="nav-link" href="{{ url('/my_favorite',['user'=> Auth::id()]) }}">
                             Favourits
                         </a>
                     </li>

@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use App\Lease;
-use App\Book;
-use App\Favourite;
 
-class UserController extends Controller
+class FavoriteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -49,7 +45,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return view('user.show');
+        //
     }
 
     /**
@@ -60,7 +56,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('user.edit',['user'=>User::find($id)]);
+        //
     }
 
     /**
@@ -72,27 +68,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $user = User::find($id);
-    //    dd($user);
-       $user->name = $request->name;
-       $user->email = $request->email;
-       $user->save();
-       return redirect()->route('user.show',['user'=>User::find($id)]);
-
+        //
     }
 
-    public function my_books($id)
-    {
-        // $books_info = Book::all()->leases();
-        $books = Lease::where('user_id',$id)->get();
-        return view('user.mybooks',['leases'=>$books]);
-    }
-
-    public function my_favorite($id)
-    {
-        $books = Favourite::where('user_id',$id)->get();
-        return view('user.favourite',['favourites'=>$books]);
-    }
     /**
      * Remove the specified resource from storage.
      *
