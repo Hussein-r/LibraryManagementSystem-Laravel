@@ -38,7 +38,7 @@
                                 <p class="card-text">{{$book->details}}</p>
                             </div>
                             <div class="card-footer">
-                                <a href="{{route('book.show',$book->id)}}" class="btn btn-primary">Find Out More!</a>
+                                <a href="/showprofile/{{$book->id}}" class="btn btn-primary">Find Out More!</a>
                             </div>
                         </div>
                     </div>
