@@ -1,6 +1,6 @@
 
-let love = document.querySelector("#love");
-function updateFavorite(book) {
+
+function updateFavorite(book,love) {
     
     $.ajax({
         type: "GEt",

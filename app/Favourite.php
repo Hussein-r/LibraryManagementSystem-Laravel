@@ -19,4 +19,4 @@ class Favourite extends Model
 }
 
 
-}
+

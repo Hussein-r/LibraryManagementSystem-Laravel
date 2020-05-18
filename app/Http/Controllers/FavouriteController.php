@@ -12,13 +12,16 @@ class FavouriteController extends Controller
     public function storeOrUpdate(Request $request)
     {
     
-                $fav = Favourite::firstOrNew(['user_id'=>Auth::id(),'book_id'=>$request->book]);
+                $fav = Favourite::where(['user_id'=>Auth::id(),'book_id'=>$request->book]);
                 if($fav->exists()){
-                    Favourite::where('user_id',Auth::id())->where('book_id',$request->book)->delete();
+                    $fav->delete();
                    return response()->json(["like"=>"no"]);
                 }
                 else
                 {    
+                    $fav=new Favourite();
+                    $fav->user_id=Auth::id();
+                    $fav->book_id=$request->book;
                     $fav->save();
                     return response()->json(["like"=>"yes"]);
                 }
