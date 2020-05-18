@@ -30,7 +30,7 @@
             @if(Auth::check())
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ url('/home') }}">
+                        <a class="nav-link" href="{{ url('/my_books',['user'=> Auth::id()]) }}">
                             My Books
                         </a>
                     </li>

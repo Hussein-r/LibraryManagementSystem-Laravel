@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Lease;
 
 class UserController extends Controller
 {
@@ -82,6 +83,8 @@ class UserController extends Controller
     {
         // $user = User::find($id);
         $books = Lease::where('user_id',$id);
+        dd($books);
+        return view('user.mybooks',['books'=>$books]);
     }
 
     /**

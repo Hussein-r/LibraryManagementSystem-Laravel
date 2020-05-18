@@ -27,6 +27,7 @@ Route::resource('book', 'BooksController');
 Route::resource('category', 'CategoriesController');
 Route::resource('lease', 'LeasesController');
 
+Route::get('/my_books/{id}', 'UserController@my_books');
 
 
 
