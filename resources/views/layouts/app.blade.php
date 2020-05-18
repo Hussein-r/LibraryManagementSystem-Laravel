@@ -85,7 +85,11 @@
                             </li>
                             <li class="nav-item">
                                 <div>
+                                    @if(Auth::user()->avatar)
                                     <img  style=" vertical-align: middle; width: 80px;height: 80px;border-radius: 50%;" src="/images/{{Auth::user()->avatar}}" alt="avatar"> 
+                                    @else
+                                    <img  style=" vertical-align: middle; width: 80px;height: 80px;border-radius: 50%;" src="/images/avatar.png" alt="avatar"> 
+                                    @endif
                                 </div>
                             </li>
                         @endguest
