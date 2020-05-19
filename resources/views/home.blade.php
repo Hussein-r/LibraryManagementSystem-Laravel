@@ -36,14 +36,23 @@
                         <div class="card h-100">
                             <img class="card-img-top" src="/images/{{$book->image}}" alt="">
                             <div class="card-body">
+<<<<<<< HEAD
                                 <h4 class="card-title">{{$book->title}}</h4>
                                 <div class="col-md-2">
                                   <button id="love"  onclick="updateFavorite({{$book->id}},this)">&#x2764;</button>
                                 </div>
                                 
+=======
+                                <h3 class="card-title">{{$book->title}}</h3>
+                                <h5 class="card-text">{{$book->details}}</h5>
+                                <b>{{ $book->copies }} copies available</b>
+>>>>>>> b11e64245393a4f2ef6c50d8b38824348ce8218a
                             </div>
                            
                             <div class="card-footer">
+                          
+                            <button id="love"  onclick="updateFavorite({{$book->id}},this)">&#x2764;</button>
+                            
                                 <a href="/showprofile/{{$book->id}}" class="btn btn-primary">Find Out More!</a>
                             </div>
                         </div>
