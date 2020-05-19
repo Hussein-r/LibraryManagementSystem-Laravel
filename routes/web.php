@@ -19,30 +19,37 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('USER');
 Route::get('/sort/{sort_value}', 'HomeController@sort');
 Route::get('/search', 'HomeController@search');
-Route::resource('user', 'UserController');
-Route::resource('book', 'BooksController');
-Route::resource('category', 'CategoriesController');
-Route::resource('lease', 'LeasesController');
+Route::resource('user', 'UserController')->middleware('USER');
+
+
+Route::resource('book', 'BooksController')->middleware('MANAGER');
+Route::resource('category', 'CategoriesController')->middleware('MANAGER');
+Route::resource('lease', 'LeasesController')->middleware('USER');
 Route::get('/fav','FavouriteController@storeOrUpdate');
 
-Route::get('/my_books/{id}', 'UserController@my_books');
-Route::get('/my_favorite/{id}', 'UserController@my_favorite');
+Route::get('/my_books/{id}', 'UserController@my_books')->middleware('USER');
+Route::get('/my_favorite/{id}', 'UserController@my_favorite')->middleware('USER');
 
 
 // hajar
+
+//delete user
 Route::delete('manager/{user}','managerController@destroy');
 
-//show graph and edit data
+// edit profile data
 Route::get('managerHome','managerController@show');
 Route::get('managers/{manager}/edit', 'managerController@edit');
 Route::patch('managers/{manager}', 'managerController@update');
 
 //list managers
 // Route::view('managerList','managers.managerList');
-Route::get('managers', 'managerController@index');
+Route::get('managers', 'managerController@index')->middleware('MANAGER');
+
+//manager profile page
+Route::get('manager/managerPage', 'managerController@profile');
 // delete manager
 Route::delete('/managers/{manager}', 'managerController@destroy');
 //unpromote manager
@@ -54,7 +61,7 @@ Route::patch('managers/{manager}', 'managerController@unpromote');
 
 //list users
 // Route::view('userList','managers.userList');
-Route::get('userList', 'userManageController@index');
+Route::get('userList', 'userManageController@index')->middleware('MANAGER');
 // delete manager
 Route::delete('/userList/{user}', 'userManageController@destroy');
 //promote user
@@ -64,7 +71,8 @@ Route::patch('userList/inactivate/{user}', 'userManageController@inactivate');
 //activate user
 Route::patch('userList/activate/{user}', 'userManageController@activate');
 //charts
-Route::get('chart', 'ChartController@index');
+Route::get('chart', 'ChartController@index')->middleware('MANAGER');
+
 
 // Route::view('managerProfile','managers.managerProfile');
 
@@ -73,12 +81,13 @@ Route::get('chart', 'ChartController@index');
 Route::view('managerProfile','managers.managerProfile');
 
 //edit dataaaaa
-Route::get('managers/{manager}/edit', 'managerController@edit');
+Route::get('managers/{manager}/edit', 'managerController@edit')->middleware('MANAGER');
 
 Route::patch('managers/{manager}', 'managerController@update');
 
 
-
+//ERRORRRR PAGE
+Route::view('error', 'managers.error');
 
 
 

@@ -15,7 +15,9 @@
     </tr>
   </thead>
   <tbody>
+ 
   @foreach($users  as $user)
+  <!-- @if($user->id != $id) -->
    <tr>
    <td>    {{$user->name}}     </td>
    <td>        {{$user->email}}          </td>
@@ -35,6 +37,7 @@
        </form>
    </td>
    </tr>
+   @endif
    @endforeach
 
   </tbody>
