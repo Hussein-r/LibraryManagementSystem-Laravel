@@ -17,3 +17,10 @@ function checkInput(price) {
     myPriceTextBox[0].value = value * price;
     myPriceTextBox[1].value = value * price;
 }
+var myRateBox = document.getElementById("myRateBox");
+function checkRate() {
+    var value = myRateBox.value;
+    if (!(value >= 1 && x <= 10)) {
+        myRateBox.preventDefault();
+    }
+}
