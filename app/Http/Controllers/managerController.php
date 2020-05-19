@@ -16,9 +16,9 @@ class managerController extends Controller
     public function index()
     {
         //
-
+        $id=@auth::user()->id;
         $users=User::List()->get();
-        return view('managers.managerList',['users' => $users]);
+        return view('managers.managerList',['users' => $users,'id'=>$id]);
     }
 
     /**
@@ -57,6 +57,16 @@ class managerController extends Controller
 
     }
 
+
+    public function profile(User $manager)
+    {
+        //
+        $manager=@auth::user();
+        // dd($manager);
+        return view('managers.managerPage',['manager'=>$manager]);
+
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -86,6 +96,7 @@ class managerController extends Controller
             'name'=>'required|min:3',
             'email'=>'required|email',
             'password'=>'required',
+            'username'=>'required',
 
     ]);
     
@@ -93,7 +104,7 @@ class managerController extends Controller
     
             // return view('managers.managerHome', ['manager'=>$manager,'chart'=>$chart]);
             return redirect()->action(
-                'ChartController@index'
+                'managerController@profile'
             );
         }
 
