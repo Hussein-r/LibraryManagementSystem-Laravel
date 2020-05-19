@@ -38,8 +38,8 @@
                             <div class="card-body">
                                 <h4 class="card-title">{{$book->title}}</h4>
                                 <div class="col-md-2">
-                                    <button id="love"  onclick="updateFavorite({{$book->id}},this)">&#x2764;</button>
-                                  </div>
+                                  <button id="love"  onclick="updateFavorite({{$book->id}},this)">&#x2764;</button>
+                                </div>
                                 
                             </div>
                            
