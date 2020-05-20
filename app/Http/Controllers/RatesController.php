@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use App\Rate;
+use App\Category;
 use Auth;
+use DB;
 use Illuminate\Http\Request;
 use Redirect;
+use Illuminate\Database\Eloquent\Model;
 
 class RatesController extends Controller
 {
@@ -88,5 +91,19 @@ class RatesController extends Controller
     public function destroy(Rate $rate)
     {
         
+    }
+    public function sort()
+    {
+         Book::paginate(3);
+        //  dd($request);
+        $books=DB::table('books')->join('rates', 'books.id', '=', 'rates.book_id')
+        ->orderByDesc('rates.rating');
+        
+        $categories = Category::all();
+        return view('home', [
+            'books' => $books,
+            'categories' => $categories,
+            
+        ]);
     }
 }

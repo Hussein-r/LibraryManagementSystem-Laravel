@@ -20,7 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('USER');
-Route::get('/sort/{sort_value}', 'HomeController@sort');
+Route::get('/latestSort/{sort}', 'HomeController@sort');
 Route::get('/search', 'HomeController@search');
 Route::resource('user', 'UserController')->middleware('USER');
 
@@ -99,3 +99,4 @@ Route::get('/showprofile/{book}','BooksController@showProfile');
 Route::get('/category/{category}', 'HomeController@category');
 Route::resource('comment', 'CommentsController');
 Route::resource('rate', 'RatesController');
+Route::get('/rateSort', 'RatesController@sort');
