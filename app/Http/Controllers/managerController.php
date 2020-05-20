@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 app('App\Http\Controllers\ChartController')->index();
 
 class managerController extends Controller
@@ -88,19 +89,28 @@ class managerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(User $manager)
+    public function update(User $manager,Request $request)
     {
         //
-        $data=request()->validate([
-            
+        $data=$this->validate($request,[
             'name'=>'required|min:3',
             'email'=>'required|email',
             'password'=>'required',
             'username'=>'required',
-
-    ]);
+            'avatar'=>'required',
+        ]);
+        if ($request->hasFile('avatar')) {
+            $imageName = time().'.'.$request->avatar->extension();  
+            $request->avatar->move(public_path('images'), $imageName);
+            $manager->name = $request->name;
+            $manager->email = $request->email;
+            $manager->password = Hash::make($request['password']);
+            $manager->username = $request->username;
+            $manager->avatar = $imageName;
+            $manager->save();
+        }
     
-            $manager->update($data);
+            
     
             // return view('managers.managerHome', ['manager'=>$manager,'chart'=>$chart]);
             return redirect()->action(
