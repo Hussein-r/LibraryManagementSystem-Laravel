@@ -18,8 +18,8 @@
             </div>
             <div class="col-sm-6 text-center">
               <b>Order By</b>
-              <a class="btn btn-light btn-outline-primary">Rate</a>
-              <a href="/sort/created_at" class="btn btn-light btn-outline-primary">Latest</a>
+              <a href="/rateSort" class="btn btn-light btn-outline-primary">Rate</a>
+              <a href="/latestSort/created_at" class="btn btn-light btn-outline-primary">Latest</a>
             </div>
           </div>
           <div style="width:100%;">
