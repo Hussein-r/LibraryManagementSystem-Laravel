@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Book;
 use App\Category;
 use App\Comment;
-
+use App\Rate;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller
@@ -143,8 +143,9 @@ class BooksController extends Controller
     }
     public function showProfile(Book $book)
     {
+        $rate=(int)Rate::where("book_id","=",$book->id)->avg('rating');
         $category=Category::where("id","=",$book->category_id)->get();
         $comments=Comment::where("book_id","=",$book->id)->get();
-        return view('Books.Book_profile',['book'=>$book,'category'=>$category,'comments'=>$comments]);
+        return view('Books.Book_profile',['book'=>$book,'category'=>$category,'comments'=>$comments,'rate'=>$rate]);
     }
 }

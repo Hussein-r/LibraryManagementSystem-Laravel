@@ -11,13 +11,14 @@
             </div>
             <div class="h-100 col-lg-4 col-md-6" style="display:inline-block;margin-left:300px;">
                 <div class="card-body">
-                    <h6 class="card-title">Book Title: {{$book->title}}</h6>
+                    <p class="card-title">Book Title: {{$book->title}}</p>
                     @foreach($category as $subcategory)
                         <p class="card-text">Category: {{$subcategory->name}}</p>
                     @endforeach
                     <p class="card-text">Book-Details: {{$book->details}}</p>
                     <p class="card-text">Written By: {{$book->auther}}</p>
                     <p class="card-text">There are {{$book->copies}} Copies Available</p>
+                    <p class="card-text">Overall Rating: {{$rate}}</p>
                     <p class="card-text">Price: {{$book->price}}</p>
                     <a href="#" class="btn btn-info" onclick="myFunction()">Lease</a>
                     <div id="myDIV" style="display:none">
