@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 app('App\Http\Controllers\ChartController')->index();
 
 class managerController extends Controller
@@ -88,33 +89,29 @@ class managerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(User $manager, Request $request)
+    public function update(User $manager,Request $request)
     {
         //
-        $data=request()->validate([
-            
+        $data=$this->validate($request,[
             'name'=>'required|min:3',
             'email'=>'required|email',
             'password'=>'required',
             'username'=>'required',
             'avatar'=>'required',
-
-    ]);
-    // dd($data);
-    // if (request()->has('avtar')) {
-    //     $manager->update([
-    //         'avatar' => request()->image->store('images', 'public'),
-    //     ]);
-    // }
-
-    // if ($request->hasFile('image')) {
-    //     $imageName = time().'.'.$request->image->extension();  
-    //     $request->image->move(public_path('images'), $imageName);
-    //     $Book->image=$imageName;
-    // }
-    // $manager->avatar=$imageName;
-    // dd($data);
-            $manager->update($data);
+        ]);
+        if ($request->hasFile('avatar')) {
+            $imageName = time().'.'.$request->avatar->extension();  
+            $request->avatar->move(public_path('images'), $imageName);
+            $manager->name = $request->name;
+            $manager->email = $request->email;
+            $manager->password = Hash::make($request['password']);
+            $manager->username = $request->username;
+            $manager->avatar = $imageName;
+            $manager->save();
+        }
+    
+            
+    
             // return view('managers.managerHome', ['manager'=>$manager,'chart'=>$chart]);
             return redirect()->action(
                 'managerController@profile'
