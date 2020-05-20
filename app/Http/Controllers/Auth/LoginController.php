@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -26,6 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
+    
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
@@ -41,4 +42,14 @@ class LoginController extends Controller
     {
         return 'username';
     }
+    
+    // protected function redirectTo()
+    // {
+    
+    //     if (@auth::user()->isAdmin==1) {
+    //         return $this->redirectTo = '/chart';
+    //     }
+        
+    //     return $this->redirectTo = '/home';
+    // }
 }

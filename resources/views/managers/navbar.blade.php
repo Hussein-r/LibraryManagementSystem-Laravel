@@ -19,30 +19,30 @@
       <li class="nav-item">
         <a class="nav-link" href="{{url('/book')}}">Books</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Welcome  {{ Auth::user()->username }}
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="{{ route('logout') }}"
+      <li class="dropdown">
+                                <h4 class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                  Welcome  {{ Auth::user()->username }} <span class="caret"></span>
+                                </h4>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-            </form>
-        </div>
-      </li>
-      <li class="nav-item">
-               <div>
-                @if(Auth::user()->avatar)
-                <img  style=" vertical-align: middle; width: 80px;height: 80px;border-radius: 50%;" src="/images/{{Auth::user()->avatar}}" alt="avatar"> 
-                 @else
-                  <img  style=" vertical-align: middle; width: 80px;height: 80px;border-radius: 50%;" src="/images/avatar.png" alt="avatar"> 
-                 @endif
-                </div>
-          </li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <div>
+                                    @if(Auth::user()->avatar)
+                                    <img  style=" vertical-align: middle; width: 80px;height: 80px;border-radius: 50%;" src="/images/{{Auth::user()->avatar}}" alt="avatar"> 
+                                    @else
+                                    <img  style=" vertical-align: middle; width: 80px;height: 80px;border-radius: 50%;" src="/images/avatar.png" alt="avatar"> 
+                                    @endif
+                                </div>
+                            </li>
     </ul>
   </div>
 </nav>

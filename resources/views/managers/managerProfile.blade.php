@@ -1,4 +1,4 @@
-<form action="/managers/{{$manager->id}}" method="POST">
+<form action="/managers/{{$manager->id}}" enctype="multipart/form-data" method="POST">
 @method('PATCH')
 <p> name: </p>
 <div  class="input-group">
@@ -20,6 +20,17 @@
 <input    type="password" name="password"> 
 <div>{{$errors->first('password')}}</div>
 </div>
+<div class="input-group mb-3">
+   <div class="input-group-prepend">
+     <span class="input-group-text">change avatar</span>
+      </div>
+       <div class="custom-file">
+         <input type="file" class="custom-file-input" name="avatar" id="inputGroupFile01">
+         <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
+           </div>
+           </div>
+             <div><span class="text-white">{{$errors->first('avatar')}}</span>
+                </div>
 
 <button type="submit"> edit data </button>
 
