@@ -18,6 +18,8 @@
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
+                background-image: url('/public/images/1.jpg');
+                
             }
 
             .full-height {
@@ -42,6 +44,7 @@
 
             .content {
                 text-align: center;
+                
             }
 
             .title {
@@ -81,10 +84,12 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Maktabaty
                 </div>
+                <h3>FIND AND READ YOUR BOOKS </h3>
+                <img src="../../public/images/1.jpg" />
 
-                <div class="links">
+                {{-- <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>
@@ -93,7 +98,7 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </body>
