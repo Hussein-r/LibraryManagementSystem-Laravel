@@ -94,11 +94,8 @@ class RatesController extends Controller
     }
     public function sort()
     {
-         Book::paginate(3);
-        //  dd($request);
-        $books=DB::table('books')->join('rates', 'books.id', '=', 'rates.book_id')
-        ->orderByDesc('rates.rating');
         
+        $books=DB::table('books')->Join('rates', 'books.id', '=', 'rates.book_id','left outer')->select('books.*',DB::raw('round(AVG(rating),0) as overallrating'))->groupBy('books.id')->orderByDesc('overallrating')->paginate(3);
         $categories = Category::all();
         return view('home', [
             'books' => $books,
