@@ -7,6 +7,7 @@ use App\Category;
 use App\Comment;
 use App\Rate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class BooksController extends Controller
 {
@@ -148,4 +149,19 @@ class BooksController extends Controller
         $comments=Comment::where("book_id","=",$book->id)->get();
         return view('Books.Book_profile',['book'=>$book,'category'=>$category,'comments'=>$comments,'rate'=>$rate]);
     }
+    // public function sort()
+    // {
+    //     $books = Book::paginate(3);
+    //     $rate=(int)Rate::where("book_id","=",$book->id)->avg('rating');
+    //     dd($rate);
+    //     $books->setCollection(
+    //         $books->sortByDesc($rate));
+       
+    //     $categories = Category::all();
+    //     return view('home', [
+    //         'books' => $books,
+    //         'categories' => $categories,
+            
+    //     ]);
+    // }
 }

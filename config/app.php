@@ -234,6 +234,7 @@ return [
         'Html' => 'Illuminate\Html\HtmlFacade',
         'Form' => 'Illuminate\Html\FormFacade',
         // 'Input' => Illuminate\Support\Facades\Input::class,
+        'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
 
     ],
 

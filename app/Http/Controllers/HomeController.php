@@ -39,12 +39,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function sort($sort_value)
+    public function sort($sort)
     {
         $books = Book::paginate(3);
         $categories = Category::all();
-        $books->setCollection(
-            $books->sortByDesc($sort_value)
+        $books->sortByDesc(
+            $books->sortBy($sort)
         );
         return view('home', [
             'books' => $books,

@@ -20,5 +20,10 @@ class Book extends Model
         return $this->hasMany('App\Favourite');
     }
 
+    public function rate()
+    {
+        return $this->hasMany('App\Rate');
+    }
+
     use SoftDeletes;
 }

@@ -72,17 +72,7 @@ class RegisterController extends Controller
         if ($request->hasFile('avatar')) {
             $imageName = time().'.'.$request->avatar->extension();  
             $request->avatar->move(public_path('images'), $imageName);
-            // $Book->image=$imageName;
         }
-// dd($imageName);
-        // $request = app('request');
-        // if($request->hasfile('avatar')){
-        // $avatar = $request->file('avatar');
-        // $filename = time() . '.' . $avatar->getClientOriginalExtension();
-        // $request->avatar->move(public_path('images'), $filename);
-        // $path = 'images'.$filename;
-        // // User::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename) );
-    // }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

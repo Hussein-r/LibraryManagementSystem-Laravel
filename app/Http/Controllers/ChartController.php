@@ -18,7 +18,7 @@ class ChartController extends Controller
     {
         $manager=@auth::user();
         // dd($manager);
-        $users = DB::select(\DB::raw("COUNT(*) as count"))
+        $users = Lease::select(\DB::raw("COUNT(*) as count"))
                     ->whereYear('created_at', date('Y'))
                     ->groupBy(\DB::raw("Day(created_at)"))
                     ->pluck('count');

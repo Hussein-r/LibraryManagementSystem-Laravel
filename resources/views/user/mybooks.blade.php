@@ -12,10 +12,12 @@
                         <img class="card-img-top" src="/images/{{$lease->book->image}}" alt="">
                         <div class="card-body">
                             <h3 class="card-title">{{$lease->book->title}}</h3>
+                            <div style="text-align: left">
                             <h5 class="card-title">Auther: {{$lease->book->auther}}</h5>
-                            <p >{{$lease->book->details}}</p>
-                            <h6>You leased this book at {{$lease->created_at}} for {{$lease->days}} days</h6>
-                        
+                            <h6>{{$lease->book->details}}</h6>
+                            <h6>You leased it at {{$lease->created_at->format('Y-m-d')}} for {{$lease->days}} days</h6>
+                            <h6>Price: {{$lease->book->price* $lease->days}}</h6>
+                        </div>
                         </div>
                         <div class="card-text">
                         </div>

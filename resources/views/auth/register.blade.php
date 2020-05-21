@@ -76,7 +76,7 @@
                         </div>
 
                         <div class="form-group row input-group mb-3">
-                            <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Profile pictur') }}</label>
+                            <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Profile picture') }}</label>
                             <div class="col-md-6 custom-file">
                                 <input type="file" class="custom-file-input" name="avatar" id="inputGroupFile01">
                                 <label class="custom-file-label" for="inputGroupFile01" value="{{ old('avatar') }}" placeholder="Choose Image">Choose Image</label>

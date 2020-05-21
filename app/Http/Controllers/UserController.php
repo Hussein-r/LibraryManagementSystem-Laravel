@@ -73,9 +73,17 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
        $user = User::find($id);
-    //    dd($user);
        $user->name = $request->name;
+       $user->username = $request->username;
        $user->email = $request->email;
+
+        // $request = app('request');
+        if ($request->hasFile('avatar')) {
+            $imageName = time().'.'.$request->avatar->extension();  
+            $request->avatar->move(public_path('images'), $imageName);
+            $user->avatar = $imageName;
+
+        }
        $user->save();
        return redirect()->route('user.show',['user'=>User::find($id)]);
 
@@ -101,6 +109,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/');
     }
 }
