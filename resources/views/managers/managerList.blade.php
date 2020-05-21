@@ -23,7 +23,7 @@
    <td>        {{$user->email}}          </td>
    <td>
    
-   <form action="/managers/{{$user->id}}" method="POST">
+   <form action="/managers/unpromote/{{$user->id}}" method="POST">
    @method('PATCH')
        @csrf       
        <button class="btn btn-warning" type="submit">Unpromote</button>

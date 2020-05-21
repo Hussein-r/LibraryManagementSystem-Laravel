@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use App\Category;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -54,10 +55,23 @@ class HomeController extends Controller
     {
         $books=Book::paginate(3);
         $categories = Category::all();
+
+        if (@auth::user()->isAdmin==1) {
+        return redirect()->action(
+            'ChartController@index'
+        );
+    }
+    else{
         return view('home', [
             'books' => $books,
             'categories' => $categories
         ]);
+
+    }
+
+       
+
+
         
     }
    

@@ -52,8 +52,10 @@ class managerController extends Controller
     public function show(User $manager)
     {
         //
+       
         $manager=@auth::user()->id;
-        // dd($manager);
+      
+        
         return view('managers.managerHome',['manager'=>$manager]);
 
     }
@@ -62,6 +64,7 @@ class managerController extends Controller
     public function profile(User $manager)
     {
         //
+        // dd(@auth::user()->is_admin);
         $manager=@auth::user();
         // dd($manager);
         return view('managers.managerPage',['manager'=>$manager]);
@@ -137,13 +140,13 @@ class managerController extends Controller
 
     public function unpromote(User $manager)
     {
-        //  dd($manager);
-            $manager->is_admin =0;
-            $manager->save();
-            // dd($manager);
-            return redirect()->action(
-                'managerController@index'
-            );   
+          //  dd($manager);
+          $manager->is_admin=0;
+          $manager->save();
+          // dd($manager);
+          return redirect()->action(
+              'managerController@index'
+          );  
     
 
     }

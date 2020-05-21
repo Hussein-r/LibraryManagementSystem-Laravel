@@ -53,7 +53,7 @@ Route::get('manager/managerPage', 'managerController@profile');
 // delete manager
 Route::delete('/managers/{manager}', 'managerController@destroy');
 //unpromote manager
-Route::patch('managers/{manager}', 'managerController@unpromote');
+Route::patch('managers/unpromote/{manager}', 'managerController@unpromote');
 
 
 
