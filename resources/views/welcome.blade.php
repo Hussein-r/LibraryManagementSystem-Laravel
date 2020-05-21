@@ -87,8 +87,7 @@
                     Maktabaty
                 </div>
                 <h3>FIND AND READ YOUR BOOKS </h3>
-                <img src="../../public/images/1.jpg" />
-
+            
                 {{-- <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>

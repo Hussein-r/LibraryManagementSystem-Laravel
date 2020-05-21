@@ -27,7 +27,10 @@
 </table>
 <br/>
 <a class="btn btn-info" style="margin: 20px auto; text-align:center; " href="{{ route('user.edit',['user'=> Auth::id()]) }}" role="button">Update your data..?</a>
-
+<h6>Not Happy :(</h6>
+{!! Form::open(['route' => ['user.destroy', Auth::id() ] ,'method' => 'delete' ]) !!}
+    {!! Form::submit('Delete your acount',['class'=>'btn btn-danger mt-3'])  !!}
+{!! Form::close() !!}
 </section>
 
 @endsection
